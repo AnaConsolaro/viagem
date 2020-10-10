@@ -75,7 +75,7 @@ public class ViagemService {
 			try {
 				gastosVO = GastosVO.criarAPartirDaViagem(viagemPorId, TipoGasto.valueOf(tipo.toUpperCase()));
 			} catch (IllegalArgumentException e) {
-				throw new ViagemException("Tipo de Gasto Inexistente");
+				throw new ViagemException("Tipo de Gasto Não Não Inexistente");
 			}
 		}
 		return gastosVO;

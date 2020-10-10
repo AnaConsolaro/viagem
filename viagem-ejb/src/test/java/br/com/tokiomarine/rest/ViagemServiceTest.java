@@ -77,7 +77,7 @@ public class ViagemServiceTest {
 			service.listarGastosViagem(1L, "TESTE");
 			fail(); 
 		} catch (ViagemException e) {
-			assertEquals("Tipo de Gasto Inexistente", e.getMessage());
+			assertEquals("Tipo de Gasto Não Não Inexistente", e.getMessage());
 		}
 
 		verify(mockViagemFacade);
