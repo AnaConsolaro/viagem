@@ -161,7 +161,7 @@ public class Viagem implements Serializable {
 	}
 	
 	public String getTexto() {
-	    return this.origem + " para " + this.destino;
+	    return this.origem + " para " + this.destino + "!";
 	}
 
 }
