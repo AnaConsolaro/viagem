@@ -159,5 +159,9 @@ public class Viagem implements Serializable {
 		passeio.setAtracao(atracao);
 		passeios.add(passeio);
 	}
+	
+	public String getTexto() {
+	    return this.origem + " para " + this.destino;
+	}
 
 }
