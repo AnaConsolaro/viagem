@@ -2,16 +2,17 @@ package br.com.tokiomarine.rest;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.HashSet;
 
 import org.easymock.EasyMockRunner;
 import org.easymock.Mock;
 import org.easymock.TestSubject;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -29,11 +30,6 @@ public class ViagemServiceTest {
 
 	@Mock
 	private ViagemFacade mockViagemFacade;
-
-	@Before
-	public void setup() {
-		reset(mockViagemFacade);
-	}
 
 	@Test
 	public void deveriaRetornarTotaldeGastoZeroTest() throws Exception {
@@ -81,7 +77,7 @@ public class ViagemServiceTest {
 			service.listarGastosViagem(1L, "TESTE");
 			fail(); 
 		} catch (ViagemException e) {
-			assertEquals("Tipo de Gasto Inválido", e.getMessage());
+			assertEquals("Tipo de Gasto Inexistente", e.getMessage());
 		}
 
 		verify(mockViagemFacade);
