@@ -11,6 +11,7 @@ import static org.junit.Assert.fail;
 import java.util.HashSet;
 
 import org.easymock.EasyMockRunner;
+import org.easymock.IAnswer;
 import org.easymock.Mock;
 import org.easymock.TestSubject;
 import org.junit.Test;
@@ -95,6 +96,36 @@ public class ViagemServiceTest {
 		viagem.getGastos().add(gasto );
 		
 		expect(mockViagemFacade.buscarPorId(1L)).andReturn(viagem);
+
+		replay(mockViagemFacade);
+
+		GastosVO gastosVO = service.listarGastosViagem(1L, "HOTEL");
+
+		verify(mockViagemFacade);
+
+		assertNotNull(gastosVO);
+		assertTrue(gastosVO.getListaGastos().size() == 1);
+		assertEquals(100.0, gastosVO.getTotalGastos(), 0.0);
+	}
+	
+	@Test
+	public void test5() throws Exception {
+		Viagem viagem = new Viagem();
+		viagem.setGastos(new HashSet<Gasto>());
+		Gasto gasto = new Gasto();
+		gasto.setTipo(TipoGasto.HOTEL);
+		gasto.setValor(100.0);
+		gasto.setEfetivado(true);
+		viagem.getGastos().add(gasto );
+		
+		expect(mockViagemFacade.buscarPorId(1L)).andAnswer(new IAnswer<Viagem>() {
+
+			@Override
+			public Viagem answer() throws Throwable {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
 
 		replay(mockViagemFacade);
 

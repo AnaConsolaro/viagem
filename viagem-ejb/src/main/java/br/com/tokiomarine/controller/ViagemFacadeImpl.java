@@ -1,7 +1,9 @@
 package br.com.tokiomarine.controller;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -80,4 +82,8 @@ public class ViagemFacadeImpl implements ViagemFacade {
 		}
 		return atracoes;
 	}
+	/*
+	private void Teste() {
+		viagemBuilder.deAviao().saindoDe("SAO PAULO").para("ROMA").visitando(atracao1).visitando(atracao2).build();
+	}*/
 }
